@@ -5,7 +5,7 @@ const ArticleCard = ({ article }) => {
     <section className="article-card">
       <section className="article-card-votes">
         <button>⬆</button>
-        <p>votes</p>
+        <p>{votes} votes</p>
         <button>⬇</button>
       </section>
       <h3 className="article-card-title">{title}</h3>

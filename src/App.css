@@ -18,6 +18,7 @@
     border: 2px solid blue;
     .article-card-votes {
       grid-area: 1 / 1 / 4 / 2;
+      text-align: center;
     }
     .article-card-title {
       grid-area: 1 / 2 / 2 / 3;
