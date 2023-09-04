@@ -31,13 +31,17 @@ const ArticleList = ({ limit }) => {
 
   const showAllArticles = (articles) => {
     return articles.map((article) => {
-      return <ArticleCard key={article.article_id} article={article} />;
+      return (
+        <ArticleCard key={article.article_id} article_id={article.article_id} />
+      );
     });
   };
 
   const showSomeArticles = (articles, limit) => {
     const someArticles = articles.map((article) => {
-      return <ArticleCard key={article.article_id} article={article} />;
+      return (
+        <ArticleCard key={article.article_id} article_id={article.article_id} />
+      );
     });
     return someArticles.slice(0, limit);
   };
