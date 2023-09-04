@@ -2,7 +2,7 @@ import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import { useState, useEffect } from "react";
 
-const ArticleList = () => {
+const ArticleList = ({ limit }) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -29,15 +29,22 @@ const ArticleList = () => {
     return <p>Loading ...</p>;
   }
 
+  const showAllArticles = (articles) => {
+    return articles.map((article) => {
+      return <ArticleCard key={article.article_id} article={article} />;
+    });
+  };
+
+  const showSomeArticles = (articles, limit) => {
+    const someArticles = articles.map((article) => {
+      return <ArticleCard key={article.article_id} article={article} />;
+    });
+    return someArticles.slice(0, limit);
+  };
+
   return (
-    <section className="articles-list">
-      <h2>Articles:</h2>
-      <section className="article-cards">
-        {articles.map((article) => {
-          return <ArticleCard key={article.article_id} article={article} />;
-        })}
-      </section>
-      <button>More articles</button>
+    <section className="article-list">
+      {limit ? showSomeArticles(articles, limit) : showAllArticles(articles)}
     </section>
   );
 };

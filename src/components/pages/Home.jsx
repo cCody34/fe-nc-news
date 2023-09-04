@@ -1,11 +1,14 @@
 import ArticleList from "../ArticleList";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <section>
-      <h2>Home here</h2>
-      <ArticleList />
-    </section>
+    <>
+      <ArticleList limit={5} />
+      <Link to="/articles">
+        <button>View all articles</button>
+      </Link>
+    </>
   );
 };
 
