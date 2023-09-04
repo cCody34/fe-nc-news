@@ -1,5 +1,4 @@
 const ArticleCard = ({ article }) => {
-  console.log(article);
   const { title, topic, article_img_url, votes, comment_count } = article;
 
   return (
