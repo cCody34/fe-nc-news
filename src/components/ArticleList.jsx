@@ -13,11 +13,13 @@ const ArticleList = () => {
   }, []);
 
   return (
-    <section>
+    <section className="articles-list">
       <h2>Articles:</h2>
-      {articles.map((article) => {
-        return <ArticleCard key={article.article_id} article={article} />;
-      })}
+      <section className="article-cards">
+        {articles.map((article) => {
+          return <ArticleCard key={article.article_id} article={article} />;
+        })}
+      </section>
       <button>More articles</button>
     </section>
   );

@@ -4,16 +4,16 @@ const ArticleCard = ({ article }) => {
 
   return (
     <section className="article-card">
-      <section className="votes-on-article-card">
+      <section className="article-card-votes">
         <button>⬆</button>
         <p>votes</p>
         <button>⬇</button>
       </section>
-      <section className="main-article-card">
-        <h3>{title}</h3>
-        <img src={`${article_img_url}`}></img>
-        <p>Comments: {comment_count}</p>
-        <p>Topic: {topic}</p>
+      <h3 className="article-card-title">{title}</h3>
+      <img className="article-card-img" src={`${article_img_url}`}></img>
+      <section className="article-card-info">
+        <p className="article-card-comment-count">Comments: {comment_count}</p>
+        <p className="article-card-topic">Topic: {topic}</p>
       </section>
     </section>
   );

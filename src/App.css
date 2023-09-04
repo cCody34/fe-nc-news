@@ -1,0 +1,32 @@
+.article-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  .article-card {
+    display: grid;
+    grid-template-columns: 40px 300px;
+    grid-template-rows: 50px 150px 30px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    max-width: 350px;
+    max-height: 250px;
+    .article-card-votes {
+      grid-area: 1 / 1 / 4 / 2;
+    }
+    .article-card-title {
+      grid-area: 1 / 2 / 2 / 3;
+    }
+    .article-card-img {
+      grid-area: 2 / 2 / 3 / 3;
+      max-height: 150px;
+      width: 300px;
+      object-fit: cover;
+    }
+    .article-card-info {
+      grid-area: 3 / 2 / 4 / 3;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
