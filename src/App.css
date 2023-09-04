@@ -18,6 +18,7 @@
     border: 2px solid blue;
     .article-card-votes {
       grid-area: 1 / 1 / 4 / 2;
+      text-align: center;
     }
     .article-card-title {
       grid-area: 1 / 2 / 2 / 3;
@@ -33,5 +34,21 @@
       display: flex;
       justify-content: space-between;
     }
+  }
+}
+.single-article {
+  max-width: 100vw;
+  .article-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 80vw;
+    .single-article-votes {
+      text-align: center;
+    }
+  }
+  .single-article-img {
+    max-width: 90%;
+    margin: 0 auto;
   }
 }
