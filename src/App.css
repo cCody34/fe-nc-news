@@ -52,3 +52,37 @@
     margin: 0 auto;
   }
 }
+.comment-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  .comment-card {
+    display: grid;
+    grid-template-columns: auto 40px;
+    grid-template-rows: auto auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    align-items: center;
+    border: 1px solid red;
+    padding: 5px;
+    margin: 2px;
+    width: 400px;
+    .comment-card-body {
+      grid-area: 1 / 1 / 2 / 3;
+      margin: 0;
+    }
+    .comment-card-info {
+      grid-area: 2 / 1 / 3 / 2;
+      display: flex;
+      justify-content: space-around;
+    }
+    .comment-card-votes {
+      grid-area: 2 / 2 / 3 / 3;
+      text-align: center;
+      .comment-card-votes-text {
+        margin: 0;
+      }
+    }
+  }
+}
