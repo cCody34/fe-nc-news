@@ -6,6 +6,7 @@ import CommentList from "../CommentList";
 const SingleArticle = () => {
   const { article_id } = useParams();
   const [singleArticle, setSingleArticle] = useState({});
+  const [articleVotes, setArticleVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -14,6 +15,7 @@ const SingleArticle = () => {
     getArticleById(article_id)
       .then(({ data }) => {
         setSingleArticle(data);
+        setArticleVotes(data.votes);
         setIsLoading(false);
         setIsError(false);
       })
@@ -30,7 +32,6 @@ const SingleArticle = () => {
     created_at,
     title,
     topic,
-    votes,
   } = singleArticle;
   const date = new Date(created_at);
 
@@ -41,6 +42,10 @@ const SingleArticle = () => {
   if (isLoading) {
     return <p>Loading ...</p>;
   }
+
+  const increaseVotes = () => {
+    console.log("increaseVotes");
+  };
 
   return (
     <section className="single-article">
@@ -59,8 +64,8 @@ const SingleArticle = () => {
           )}
         </section>
         <section className="single-article-votes">
-          <button>⬆</button>
-          <p>{votes} votes</p>
+          <button onClick={increaseVotes()}>⬆</button>
+          <p>{articleVotes} votes</p>
           <button>⬇</button>
         </section>
       </section>

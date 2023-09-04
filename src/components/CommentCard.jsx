@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const CommentCard = ({ comment }) => {
-  console.log(comment);
   const { article_id, author, body, comment_id, created_at, votes } = comment;
   const date = new Date(created_at);
   return (
