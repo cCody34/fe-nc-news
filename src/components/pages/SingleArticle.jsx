@@ -42,31 +42,33 @@ const SingleArticle = () => {
   }
 
   return (
-    <>
-      <h2>{title}</h2>
+    <section className="single-article">
+      <h2 id="single-article-title">{title}</h2>
       <section className="article-info">
-        <p>Topic: {topic}</p>
-        <p>Author: {author}</p>
-        <p>
-          Number of <a href="#article-comments">comments</a>: {comment_count}
-        </p>
-        {created_at ? (
-          <p>Article date: {date.toLocaleDateString("en-GB")}</p>
-        ) : (
-          <></>
-        )}
+        <section className="article-info-text">
+          <p>Topic: {topic}</p>
+          <p>Author: {author}</p>
+          <p>
+            Number of <a href="#article-comments">comments</a>: {comment_count}
+          </p>
+          {created_at ? (
+            <p>Article date: {date.toLocaleDateString("en-GB")}</p>
+          ) : (
+            <></>
+          )}
+        </section>
         <section className="single-article-votes">
           <button>⬆</button>
           <p>{votes} votes</p>
           <button>⬇</button>
         </section>
       </section>
-      <img src={`${article_img_url}`}></img>
+      <img className="single-article-img" src={`${article_img_url}`}></img>
       <p>{body}</p>
-      <section>
+      <section className="single-article-comments-section">
         <h3 id="article-comments">Article Comments</h3>
       </section>
-    </>
+    </section>
   );
 };
 
