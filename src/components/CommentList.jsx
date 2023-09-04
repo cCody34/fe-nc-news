@@ -27,13 +27,12 @@ const CommentList = ({ article_id }) => {
   if (isLoading) {
     return <p>Loading comments ...</p>;
   }
-  console.log(comments);
 
   return (
     <>
       {comments.map((comment) => {
         const { comment_id } = comment;
-        return <CommentCard comment_id={comment_id} />;
+        return <CommentCard key={comment_id} comment={comment} />;
       })}
     </>
   );
