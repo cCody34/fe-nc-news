@@ -9,3 +9,7 @@ export const getArticles = () => {
 export const getArticleById = (article_id) => {
   return newsApi.get(`/articles/${article_id}`);
 };
+
+export const getComments = (article_id) => {
+  return newsApi.get(`/articles/${article_id}/comments`);
+};
