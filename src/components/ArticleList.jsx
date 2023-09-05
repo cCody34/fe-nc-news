@@ -2,14 +2,14 @@ import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import { useState, useEffect } from "react";
 
-const ArticleList = ({ limit, topicQuery, sortByQuery }) => {
+const ArticleList = ({ limit, topicQuery, sortByQuery, orderQuery }) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topicQuery, sortByQuery)
+    getArticles(topicQuery, sortByQuery, orderQuery)
       .then(({ data }) => {
         const { articles } = data;
         setArticles(articles);
