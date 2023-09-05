@@ -4,12 +4,16 @@ import ArticleList from "../ArticleList";
 const Articles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const topicQuery = searchParams.get("topic");
+  const formatTopicQuery = (topicQuery) => {
+    return topicQuery[0].toUpperCase() + topicQuery.slice(1);
+  };
+  console.log(topicQuery);
   const sortByQuery = searchParams.get("sort_by");
   const orderQuery = searchParams.get("order");
   console.log(sortByQuery, "<< SORT BY");
   return (
     <section>
-      <h2>All Articles:</h2>
+      <h2>{topicQuery ? formatTopicQuery(topicQuery) : "All Articles:"}</h2>
       <ArticleList
         topicQuery={topicQuery}
         sortByQuery={sortByQuery}
