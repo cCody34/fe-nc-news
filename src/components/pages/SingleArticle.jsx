@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getArticleById } from "../../api";
+import { getArticleById, patchArticleVotes } from "../../api";
 import CommentList from "../CommentList";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
   const [singleArticle, setSingleArticle] = useState({});
+  const [articleVotes, setArticleVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -14,6 +15,7 @@ const SingleArticle = () => {
     getArticleById(article_id)
       .then(({ data }) => {
         setSingleArticle(data);
+        setArticleVotes(data.votes);
         setIsLoading(false);
         setIsError(false);
       })
@@ -30,7 +32,6 @@ const SingleArticle = () => {
     created_at,
     title,
     topic,
-    votes,
   } = singleArticle;
   const date = new Date(created_at);
 
@@ -41,6 +42,18 @@ const SingleArticle = () => {
   if (isLoading) {
     return <p>Loading ...</p>;
   }
+
+  const changeVotes = (increment) => {
+    patchArticleVotes(article_id, increment)
+      .then(({ data }) => {
+        setArticleVotes(data.votes);
+        setSingleArticle(data);
+        setIsError(false);
+      })
+      .catch(({ message }) => {
+        setIsError(message);
+      });
+  };
 
   return (
     <section className="single-article">
@@ -59,9 +72,21 @@ const SingleArticle = () => {
           )}
         </section>
         <section className="single-article-votes">
-          <button>⬆</button>
-          <p>{votes} votes</p>
-          <button>⬇</button>
+          <button
+            onClick={() => {
+              changeVotes(1);
+            }}
+          >
+            ⬆
+          </button>
+          <p>{articleVotes} votes</p>
+          <button
+            onClick={() => {
+              changeVotes(-1);
+            }}
+          >
+            ⬇
+          </button>
         </section>
       </section>
       <img className="single-article-img" src={`${article_img_url}`}></img>

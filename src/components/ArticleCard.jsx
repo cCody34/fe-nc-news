@@ -1,9 +1,10 @@
-import { getArticleById } from "../api";
+import { getArticleById, patchArticleVotes } from "../api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article_id }) => {
   const [article, setArticle] = useState({});
+  const [articleVotes, setArticleVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -12,7 +13,7 @@ const ArticleCard = ({ article_id }) => {
     getArticleById(article_id)
       .then(({ data }) => {
         setArticle(data);
-        console.log(data);
+        setArticleVotes(data.votes);
         setIsLoading(false);
         setIsError(false);
       })
@@ -21,13 +22,23 @@ const ArticleCard = ({ article_id }) => {
       });
   }, []);
 
-  const {
-    article_img_url,
-    comment_count,
-    title,
-    topic,
-    votes,
-  } = article;
+  const { article_img_url, comment_count, title, topic } = article;
+
+  const changeVotes = (increment) => {
+    patchArticleVotes(article_id, increment)
+      .then(({ data }) => {
+        console.log(data, "<<<DATA IN PATCH");
+        setArticleVotes(data.votes);
+        return getArticleById(article_id);
+      })
+      .then(({ data }) => {
+        setArticle(data);
+        setIsError(false);
+      })
+      .catch(({ message }) => {
+        setIsError(message);
+      });
+  };
 
   if (isError) {
     return <p>Error: {isError}</p>;
@@ -40,9 +51,21 @@ const ArticleCard = ({ article_id }) => {
   return (
     <section className="article-card">
       <section className="article-card-votes">
-        <button>⬆</button>
-        <p>{votes} votes</p>
-        <button>⬇</button>
+        <button
+          onClick={() => {
+            changeVotes(1);
+          }}
+        >
+          ⬆
+        </button>
+        <p>{articleVotes} votes</p>
+        <button
+          onClick={() => {
+            changeVotes(-1);
+          }}
+        >
+          ⬇
+        </button>
       </section>
       <h3 className="article-card-title">
         <Link to={`/articles/${article_id}`}>{title}</Link>
