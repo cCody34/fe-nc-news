@@ -27,7 +27,11 @@ const ArticleCard = ({ article_id }) => {
   const changeVotes = (increment) => {
     patchArticleVotes(article_id, increment)
       .then(({ data }) => {
+        console.log(data, "<<<DATA IN PATCH");
         setArticleVotes(data.votes);
+        return getArticleById(article_id);
+      })
+      .then(({ data }) => {
         setArticle(data);
         setIsError(false);
       })
