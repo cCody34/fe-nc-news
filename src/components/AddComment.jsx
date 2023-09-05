@@ -16,18 +16,18 @@ const AddComment = ({ article_id, setComments }) => {
       setNeedTextMessage("");
       setComments((currentComments) => {
         return [
-          ...currentComments,
           {
-            author: "icellusedkars",
+            author: "tickle122",
             body: newComment,
             created_at: new Date(),
             votes: 0,
             comment_id: Date.now(),
           },
+          ...currentComments,
         ];
       });
       setIsError(false);
-      postComment(article_id, "icellusedkars", newComment)
+      postComment(article_id, "tickle122", newComment)
         .then(() => {
           setIsLoading(false);
           setNewComment("");

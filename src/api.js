@@ -2,8 +2,12 @@ import axios from "axios";
 
 const newsApi = axios.create({ baseURL: "https://news-ynvj.onrender.com/api" });
 
-export const getArticles = () => {
-  return newsApi.get("/articles");
+export const getArticles = (topicQuery) => {
+  if (topicQuery) {
+    return newsApi.get(`/articles?topic=${topicQuery}`);
+  } else {
+    return newsApi.get("/articles");
+  }
 };
 
 export const getArticleById = (article_id) => {
