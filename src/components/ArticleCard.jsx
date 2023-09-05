@@ -25,13 +25,9 @@ const ArticleCard = ({ article_id }) => {
   const { article_img_url, comment_count, title, topic } = article;
 
   const changeVotes = (increment) => {
+    setArticleVotes((currentVotes) => currentVotes + increment);
     patchArticleVotes(article_id, increment)
-      .then(({ data }) => {
-        setArticleVotes(data.votes);
-        return getArticleById(article_id);
-      })
-      .then(({ data }) => {
-        setArticle(data);
+      .then(() => {
         setIsError(false);
       })
       .catch(({ message }) => {
