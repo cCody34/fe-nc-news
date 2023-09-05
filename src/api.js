@@ -2,9 +2,9 @@ import axios from "axios";
 
 const newsApi = axios.create({ baseURL: "https://news-ynvj.onrender.com/api" });
 
-export const getArticles = (topicQuery, sortByQuery, orderQuery) => {
+export const getArticles = (topic, sort_by, order) => {
   return newsApi.get("/articles", {
-    params: { topic: topicQuery, sort_by: sortByQuery, order: orderQuery },
+    params: { topic, sort_by, order },
   });
 };
 

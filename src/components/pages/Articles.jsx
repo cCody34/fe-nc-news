@@ -3,72 +3,53 @@ import ArticleList from "../ArticleList";
 
 const Articles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const topicQuery = searchParams.get("topic");
-  const formatTopicQuery = (topicQuery) => {
-    return topicQuery[0].toUpperCase() + topicQuery.slice(1);
+  const topic = searchParams.get("topic");
+  const formatTopicQuery = (topic) => {
+    return topic[0].toUpperCase() + topic.slice(1);
   };
-  const sortByQuery = searchParams.get("sort_by");
-  const orderQuery = searchParams.get("order");
+  const sort_by = searchParams.get("sort_by");
+  const order = searchParams.get("order");
 
-  const changeSortAndOrder = (value) => {
-    switch (value) {
-      case "titleASC":
-        setSearchParams({ sort_by: "title", order: "asc", topic: topicQuery });
-        break;
-      case "titleDESC":
-        setSearchParams({ sort_by: "title", order: "desc", topic: topicQuery });
-        break;
-      case "votesASC":
-        setSearchParams({ sort_by: "votes", order: "asc", topic: topicQuery });
-        break;
-      case "votesDESC":
-        setSearchParams({ sort_by: "votes", order: "desc", topic: topicQuery });
-        break;
-      case "dateASC":
-        setSearchParams({
-          sort_by: "created_at",
-          order: "asc",
-          topic: topicQuery,
-        });
-        break;
-      case "dateDESC":
-        setSearchParams({
-          sort_by: "created_at",
-          order: "desc",
-          topic: topicQuery,
-        });
-        break;
-      case "commentsASC":
-        setSearchParams({ sort_by: "comment_count", order: "asc" });
-        break;
-      case "commentsDESC":
-        setSearchParams({ sort_by: "comment_count", order: "desc" });
-        break;
-    }
+  const changeOrder = (order) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("order", order);
+    setSearchParams(newParams);
+  };
+
+  const changeSortBy = (sort) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("sort_by", sort);
+    setSearchParams(newParams);
   };
 
   return (
     <section>
-      <h2>{topicQuery ? formatTopicQuery(topicQuery) : "All Articles:"}</h2>
-      <select
-        onChange={(event) => {
-          changeSortAndOrder(event.target.value);
-        }}
-      >
-        <option value={"titleASC"}>Title (a-z)</option>
-        <option value={"titleDESC"}>Title (z-a)</option>
-        <option value={"votesASC"}>Votes (ascending)</option>
-        <option value={"votesDESC"}>Votes (descending)</option>
-        <option value={"dateASC"}>Date created (newest first)</option>
-        <option value={"dateDESC"}>Date created (oldest first)</option>
-        <option value={"commentsASC"}>Number of comments (ascending)</option>
-        <option value={"commentsDESC"}>Number of comments (descending)</option>
-      </select>
-      <ArticleList
-        topicQuery={topicQuery}
-        sortByQuery={sortByQuery}
-        orderQuery={orderQuery}
-      />
+      <h2>{topic ? formatTopicQuery(topic) : "All Articles:"}</h2>
+      <label>
+        Sort by:
+        <select
+          onChange={(event) => {
+            changeSortBy(event.target.value);
+          }}
+        >
+          <option value="created_at">Date created</option>
+          <option value="title">Title</option>
+          <option value="votes">Votes</option>
+          <option value="comment_count">Number of Comments</option>
+        </select>
+      </label>
+      <label>
+        Order:
+        <select
+          onChange={(event) => {
+            changeOrder(event.target.value);
+          }}
+        >
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </label>
+      <ArticleList topic={topic} sort_by={sort_by} order={order} />
     </section>
   );
 };
