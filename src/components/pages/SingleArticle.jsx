@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getArticleById } from "../../api";
+import { getArticleById, patchArticleVotes } from "../../api";
 import CommentList from "../CommentList";
 
 const SingleArticle = () => {
@@ -43,8 +43,16 @@ const SingleArticle = () => {
     return <p>Loading ...</p>;
   }
 
-  const increaseVotes = () => {
-    console.log("increaseVotes");
+  const changeVotes = (increment) => {
+    patchArticleVotes(article_id, increment)
+      .then(({ data }) => {
+        setArticleVotes(data.votes);
+        setSingleArticle(data);
+        setIsError(false);
+      })
+      .catch(({ message }) => {
+        setIsError(message);
+      });
   };
 
   return (
@@ -64,9 +72,21 @@ const SingleArticle = () => {
           )}
         </section>
         <section className="single-article-votes">
-          <button onClick={increaseVotes()}>⬆</button>
+          <button
+            onClick={() => {
+              changeVotes(1);
+            }}
+          >
+            ⬆
+          </button>
           <p>{articleVotes} votes</p>
-          <button>⬇</button>
+          <button
+            onClick={() => {
+              changeVotes(-1);
+            }}
+          >
+            ⬇
+          </button>
         </section>
       </section>
       <img className="single-article-img" src={`${article_img_url}`}></img>
