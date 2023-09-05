@@ -17,3 +17,7 @@ export const getComments = (article_id) => {
 export const patchArticleVotes = (article_id, increment) => {
   return newsApi.patch(`/articles/${article_id}`, { inc_votes: increment });
 };
+
+export const postComment = (article_id, username, body) => {
+  return newsApi.post(`/articles/${article_id}/comments`, { username, body });
+};
