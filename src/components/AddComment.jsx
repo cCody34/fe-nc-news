@@ -5,18 +5,24 @@ const AddComment = () => {
   const handleCommentSubmit = (event) => {
     event.preventDefault();
     if (newComment) {
-        console.log("new Comment")
+      console.log("new Comment");
+
+      setNewComment("");
+    } else {
+      console.log("no comment");
     }
-    console.log("no comment");
   };
   return (
     <form>
-      <input
-        value={newComment}
-        onChange={(event) => {
-          setNewComment(event.target.value);
-        }}
-      ></input>
+      <label>
+        Add Comment:
+        <input
+          value={newComment}
+          onChange={(event) => {
+            setNewComment(event.target.value);
+          }}
+        ></input>
+      </label>
       <button onClick={handleCommentSubmit}>Submit</button>
     </form>
   );
