@@ -9,7 +9,6 @@ const AddComment = () => {
     }
     console.log("no comment");
   };
-  console.log(newComment);
   return (
     <form>
       <input

@@ -45,9 +45,9 @@ const SingleArticle = () => {
   }
 
   const changeVotes = (increment) => {
+    setArticleVotes((currentVotes) => currentVotes + increment);
     patchArticleVotes(article_id, increment)
       .then(({ data }) => {
-        setArticleVotes(data.votes);
         setSingleArticle(data);
         setIsError(false);
       })
