@@ -10,6 +10,7 @@ const SingleArticle = () => {
   const [articleVotes, setArticleVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -93,8 +94,12 @@ const SingleArticle = () => {
       <p>{body}</p>
       <section className="single-article-comments-section">
         <h3 id="article-comments">Article Comments</h3>
-        <CommentList article_id={article_id} />
-        <AddComment />
+        <CommentList
+          article_id={article_id}
+          comments={comments}
+          setComments={setComments}
+        />
+        <AddComment setComments={setComments} />
       </section>
     </section>
   );
