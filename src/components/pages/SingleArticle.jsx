@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getArticleById, patchArticleVotes } from "../../api";
 import CommentList from "../CommentList";
+import AddComment from "../AddComment";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -94,6 +95,7 @@ const SingleArticle = () => {
       <section className="single-article-comments-section">
         <h3 id="article-comments">Article Comments</h3>
         <CommentList article_id={article_id} />
+        <AddComment />
       </section>
     </section>
   );
