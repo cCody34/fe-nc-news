@@ -29,16 +29,13 @@ const CommentList = ({ article_id, comments, setComments }) => {
 
   return (
     <>
+      <AddComment setComments={setComments} article_id={article_id} />
       <section className="comment-list">
         {comments.map((comment) => {
           const { comment_id } = comment;
           return <CommentCard key={comment_id} comment={comment} />;
         })}
       </section>
-      <AddComment
-        setComments={setComments}
-        article_id={article_id}
-      />
     </>
   );
 };

@@ -16,7 +16,6 @@ const AddComment = ({ article_id, setComments }) => {
       setNeedTextMessage("");
       setComments((currentComments) => {
         return [
-          ...currentComments,
           {
             author: "tickle122",
             body: newComment,
@@ -24,6 +23,7 @@ const AddComment = ({ article_id, setComments }) => {
             votes: 0,
             comment_id: Date.now(),
           },
+          ...currentComments,
         ];
       });
       setIsError(false);
