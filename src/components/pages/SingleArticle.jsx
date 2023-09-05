@@ -11,6 +11,7 @@ const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [comments, setComments] = useState([]);
+  
 
   useEffect(() => {
     setIsLoading(true);
@@ -99,7 +100,7 @@ const SingleArticle = () => {
           comments={comments}
           setComments={setComments}
         />
-        <AddComment setComments={setComments} />
+
       </section>
     </section>
   );

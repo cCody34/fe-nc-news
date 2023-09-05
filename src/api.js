@@ -19,8 +19,5 @@ export const patchArticleVotes = (article_id, increment) => {
 };
 
 export const postComment = (article_id, username, body) => {
-  return newsApi.post(`api/articles/${article_id}/comments`, {
-    username: username,
-    body: body,
-  });
+  return newsApi.post(`/articles/${article_id}/comments`, { username, body });
 };

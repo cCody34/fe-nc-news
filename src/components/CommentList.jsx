@@ -1,11 +1,11 @@
 import { getComments } from "../api";
 import { useState, useEffect } from "react";
 import CommentCard from "./CommentCard";
+import AddComment from "./AddComment";
 
 const CommentList = ({ article_id, comments, setComments }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-
   useEffect(() => {
     setIsLoading(true);
     getComments(article_id)
@@ -28,12 +28,18 @@ const CommentList = ({ article_id, comments, setComments }) => {
   }
 
   return (
-    <section className="comment-list">
-      {comments.map((comment) => {
-        const { comment_id } = comment;
-        return <CommentCard key={comment_id} comment={comment} />;
-      })}
-    </section>
+    <>
+      <section className="comment-list">
+        {comments.map((comment) => {
+          const { comment_id } = comment;
+          return <CommentCard key={comment_id} comment={comment} />;
+        })}
+      </section>
+      <AddComment
+        setComments={setComments}
+        article_id={article_id}
+      />
+    </>
   );
 };
 
