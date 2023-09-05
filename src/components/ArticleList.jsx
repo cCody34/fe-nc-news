@@ -19,7 +19,7 @@ const ArticleList = ({ limit, topicQuery }) => {
       .catch(({ message }) => {
         setIsError(message);
       });
-  }, []);
+  }, [topicQuery]);
 
   if (isError) {
     return <p>Error: {isError}</p>;
