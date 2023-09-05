@@ -19,7 +19,7 @@ const ArticleList = ({ limit, topicQuery, sortByQuery, orderQuery }) => {
       .catch(({ message }) => {
         setIsError(message);
       });
-  }, [topicQuery, sortByQuery]);
+  }, [topicQuery, sortByQuery, orderQuery]);
 
   if (isError) {
     return <p>Error: {isError}</p>;
