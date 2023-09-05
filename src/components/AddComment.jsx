@@ -18,7 +18,7 @@ const AddComment = ({ article_id, setComments }) => {
         return [
           ...currentComments,
           {
-            author: "icellusedkars",
+            author: "tickle122",
             body: newComment,
             created_at: new Date(),
             votes: 0,
@@ -27,7 +27,7 @@ const AddComment = ({ article_id, setComments }) => {
         ];
       });
       setIsError(false);
-      postComment(article_id, "icellusedkars", newComment)
+      postComment(article_id, "tickle122", newComment)
         .then(() => {
           setIsLoading(false);
           setNewComment("");
