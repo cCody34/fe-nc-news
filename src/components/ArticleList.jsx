@@ -2,14 +2,14 @@ import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import { useState, useEffect } from "react";
 
-const ArticleList = ({ limit, topicQuery }) => {
+const ArticleList = ({ limit, topicQuery, sortByQuery }) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topicQuery)
+    getArticles(topicQuery, sortByQuery)
       .then(({ data }) => {
         const { articles } = data;
         setArticles(articles);
@@ -19,7 +19,7 @@ const ArticleList = ({ limit, topicQuery }) => {
       .catch(({ message }) => {
         setIsError(message);
       });
-  }, [topicQuery]);
+  }, [topicQuery, sortByQuery]);
 
   if (isError) {
     return <p>Error: {isError}</p>;
