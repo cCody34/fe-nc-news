@@ -6,6 +6,7 @@ import AddComment from "./AddComment";
 const CommentList = ({ article_id, comments, setComments }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     setIsLoading(true);
     getComments(article_id)
@@ -18,6 +19,8 @@ const CommentList = ({ article_id, comments, setComments }) => {
         setIsError(message);
       });
   }, []);
+
+console.log(comments, "<<<IN LIST")
 
   if (isError) {
     return <p>Error: {isError}</p>;

@@ -1,24 +1,31 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "./contexts/User";
+import { deleteComment } from "../api";
 
 const CommentCard = ({ comment, setComments }) => {
   const { article_id, author, body, comment_id, created_at, votes } = comment;
   const { user } = useContext(UserContext);
-  console.log(user);
+  const [isError, setIsError] = useState(false);
 
   const date = new Date(created_at);
 
-  const deleteCommentButton = () => {
-    return (
-      <button
-        onClick={() => {
-        }}
-      >
-        ❌
-      </button>
-    );
+  const handleDeleteComment = () => {
+    setComments((currentComments) => {
+      return currentComments.filter((comment) => {
+        return comment.comment_id !== comment_id;
+      });
+    });
+    setIsError(false);
+    deleteComment(comment_id).catch((err) => {
+      setIsError("Something went wrong, please try again");
+    });
   };
+
+  if (isError) {
+    return <p>Error: {isError}</p>;
+  }
+
   return (
     <section className="comment-card">
       <h4 className="comment-card-body">{body}</h4>
@@ -29,7 +36,11 @@ const CommentCard = ({ comment, setComments }) => {
         ) : (
           <></>
         )}
-        {author === user.username ? deleteCommentButton() : <></>}
+        {author === user.username ? (
+          <button onClick={handleDeleteComment}>❌</button>
+        ) : (
+          <></>
+        )}
       </section>
       <section className="comment-card-votes">
         <button className="comment-card-votes-buttons">⬆</button>
