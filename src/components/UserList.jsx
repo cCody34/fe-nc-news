@@ -11,8 +11,6 @@ const UserList = () => {
     });
   }, []);
 
-  console.log(users);
-
   return (
     <div className="user-list">
       {users.map((user) => {
