@@ -31,7 +31,7 @@ const Articles = () => {
           onChange={(event) => {
             changeSortBy(event.target.value);
           }}
-          defaultValue={sortByQuery}
+          defaultValue={sortByQuery ? sortByQuery : "created_at"}
         >
           <option value="created_at">Date created</option>
           <option value="title">Title</option>
@@ -45,7 +45,7 @@ const Articles = () => {
           onChange={(event) => {
             changeOrder(event.target.value);
           }}
-          defaultValue={orderQuery}
+          defaultValue={orderQuery ? orderQuery : "desc"}
         >
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
