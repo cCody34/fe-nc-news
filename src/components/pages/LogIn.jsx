@@ -1,5 +1,12 @@
+import UserList from "../UserList";
+
 const LogIn = () => {
-  return <h2>LOGGING IN HERE</h2>;
+  return (
+    <form>
+      <h2>Which user would you like to log in as?</h2>
+      <UserList />
+    </form>
+  );
 };
 
 export default LogIn;
