@@ -1,23 +1,28 @@
 import { useState } from "react";
 import { postComment } from "../api";
+import { useContext } from "react";
+import { UserContext } from "./contexts/User";
 
 const AddComment = ({ article_id, setComments }) => {
   const [newComment, setNewComment] = useState("");
   const [needTextMessage, setNeedTextMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { user } = useContext(UserContext);
 
   const handleCommentSubmit = (event) => {
     event.preventDefault();
     if (!newComment) {
       setNeedTextMessage("Can't post a blank comment!");
+    } else if (!user.username) {
+      setNeedTextMessage("Must be logged in to post a new comment");
     } else {
       setIsLoading(true);
       setNeedTextMessage("");
       setComments((currentComments) => {
         return [
           {
-            author: "tickle122",
+            author: user.username,
             body: newComment,
             created_at: new Date(),
             votes: 0,

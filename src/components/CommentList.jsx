@@ -20,8 +20,6 @@ const CommentList = ({ article_id, comments, setComments }) => {
       });
   }, []);
 
-console.log(comments, "<<<IN LIST")
-
   if (isError) {
     return <p>Error: {isError}</p>;
   }
