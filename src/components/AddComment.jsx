@@ -27,6 +27,7 @@ const AddComment = ({ article_id, setComments }) => {
             created_at: new Date(),
             votes: 0,
             comment_id: Date.now(),
+            posting: true,
           },
           ...currentComments,
         ];

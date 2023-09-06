@@ -6,6 +6,7 @@ import AddComment from "./AddComment";
 const CommentList = ({ article_id, comments, setComments }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [commentCardError, setCommentCardError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,6 +29,18 @@ const CommentList = ({ article_id, comments, setComments }) => {
     return <p>Loading comments ...</p>;
   }
 
+  if (commentCardError) {
+    if (commentCardError === "Request failed with status code 500") {
+      return (
+        <p>
+          Error: Could not delete comment, please refresh page and try again
+        </p>
+      );
+    } else {
+      return <p>Error: {commentCardError}</p>;
+    }
+  }
+
   return (
     <>
       <AddComment setComments={setComments} article_id={article_id} />
@@ -39,6 +52,7 @@ const CommentList = ({ article_id, comments, setComments }) => {
               key={comment_id}
               comment={comment}
               setComments={setComments}
+              setCommentCardError={setCommentCardError}
             />
           );
         })}

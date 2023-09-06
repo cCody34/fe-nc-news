@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { UserContext } from "./contexts/User";
 import { deleteComment } from "../api";
 
-const CommentCard = ({ comment, setComments }) => {
-  const { article_id, author, body, comment_id, created_at, votes } = comment;
+const CommentCard = ({ comment, setComments, setCommentCardError }) => {
+  const { article_id, author, body, comment_id, created_at, votes, posting } =
+    comment;
   const { user } = useContext(UserContext);
-  const [isError, setIsError] = useState(false);
 
   const date = new Date(created_at);
 
@@ -16,15 +16,11 @@ const CommentCard = ({ comment, setComments }) => {
         return comment.comment_id !== comment_id;
       });
     });
-    setIsError(false);
-    deleteComment(comment_id).catch((err) => {
-      setIsError("Something went wrong, please try again");
+    setCommentCardError(false);
+    deleteComment(comment_id).catch(({ message }) => {
+      setCommentCardError(message);
     });
   };
-
-  if (isError) {
-    return <p>Error: {isError}</p>;
-  }
 
   return (
     <section className="comment-card">
