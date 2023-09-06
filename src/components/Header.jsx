@@ -4,11 +4,21 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const { user } = useContext(UserContext);
+
+  const displayLoggedIn = (user) => {
+    return (
+      <section className="header-logged-in">
+        <p className="header-logged-in-username">Logged in as: {user.name}</p>
+        <img className="header-logged-in-avatar" src={user.avatar_url}></img>
+      </section>
+    );
+  };
+
   return (
     <section className="header">
       <h1>Header here</h1>
       {user.username ? (
-        <p>Logged in as:{user.name}</p>
+        displayLoggedIn(user)
       ) : (
         <Link to="/log-in">
           <button>Log-in here</button>

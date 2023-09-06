@@ -102,3 +102,11 @@
     }
   }
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  .header-logged-in-avatar {
+    height: 40px;
+  }
+}
