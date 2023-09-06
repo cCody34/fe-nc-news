@@ -14,8 +14,7 @@ const UserList = () => {
   console.log(users);
 
   return (
-    <div>
-      <h2>USER LIST HERE</h2>
+    <div className="user-list">
       {users.map((user) => {
         return <UserCard user={user} key={user.username} />;
       })}
