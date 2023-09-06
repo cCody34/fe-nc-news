@@ -11,7 +11,6 @@ const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [comments, setComments] = useState([]);
-  
 
   useEffect(() => {
     setIsLoading(true);
@@ -22,8 +21,8 @@ const SingleArticle = () => {
         setIsLoading(false);
         setIsError(false);
       })
-      .catch(({ message }) => {
-        setIsError(message);
+      .catch((err) => {
+        setIsError(err);
       });
   }, []);
 
@@ -39,7 +38,7 @@ const SingleArticle = () => {
   const date = new Date(created_at);
 
   if (isError) {
-    return <p>Error: {isError}</p>;
+    return <p>Error: {isError.message}</p>;
   }
 
   if (isLoading) {
@@ -100,7 +99,6 @@ const SingleArticle = () => {
           comments={comments}
           setComments={setComments}
         />
-
       </section>
     </section>
   );
