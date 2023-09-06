@@ -27,3 +27,7 @@ export const postComment = (article_id, username, body) => {
 export const getUsers = () => {
   return newsApi.get("users");
 };
+
+export const deleteComment = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`);
+};
