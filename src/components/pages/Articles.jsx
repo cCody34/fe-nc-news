@@ -3,16 +3,16 @@ import ArticleList from "../ArticleList";
 
 const Articles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const topic = searchParams.get("topic");
-  const formatTopicQuery = (topic) => {
-    return topic[0].toUpperCase() + topic.slice(1);
+  const topicQuery = searchParams.get("topic");
+  const formatTopicQuery = (topicQuery) => {
+    return topicQuery[0].toUpperCase() + topicQuery.slice(1);
   };
-  const sort_by = searchParams.get("sort_by");
-  const order = searchParams.get("order");
+  const sortByQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
 
-  const changeOrder = (order) => {
+  const changeOrder = (orderQuery) => {
     const newParams = new URLSearchParams(searchParams);
-    newParams.set("order", order);
+    newParams.set("order", orderQuery);
     setSearchParams(newParams);
   };
 
@@ -24,13 +24,14 @@ const Articles = () => {
 
   return (
     <section>
-      <h2>{topic ? formatTopicQuery(topic) : "All Articles:"}</h2>
+      <h2>{topicQuery ? formatTopicQuery(topicQuery) : "All Articles:"}</h2>
       <label>
         Sort by:
         <select
           onChange={(event) => {
             changeSortBy(event.target.value);
           }}
+          defaultValue={sortByQuery}
         >
           <option value="created_at">Date created</option>
           <option value="title">Title</option>
@@ -44,12 +45,17 @@ const Articles = () => {
           onChange={(event) => {
             changeOrder(event.target.value);
           }}
+          defaultValue={orderQuery}
         >
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
       </label>
-      <ArticleList topic={topic} sort_by={sort_by} order={order} />
+      <ArticleList
+        topic={topicQuery}
+        sort_by={sortByQuery}
+        order={orderQuery}
+      />
     </section>
   );
 };
