@@ -17,7 +17,7 @@ const UserList = () => {
     <div>
       <h2>USER LIST HERE</h2>
       {users.map((user) => {
-        return <UserCard user={user} />;
+        return <UserCard user={user} key={user.username} />;
       })}
     </div>
   );
