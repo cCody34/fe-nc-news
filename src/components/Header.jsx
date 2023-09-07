@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <section className="header">
-      <h1>Header here</h1>
+      <h1 className="header-main-text">NC News</h1>
       {user.username ? (
         displayLoggedIn(user)
       ) : (

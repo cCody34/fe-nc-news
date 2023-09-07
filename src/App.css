@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  padding: 20px;
+  background-color: yellow;
+}
+
 .article-list {
   display: flex;
   flex-direction: row;
@@ -106,6 +116,9 @@
 .header {
   display: flex;
   justify-content: space-between;
+  .header-main-text {
+    font-size: xx-large;
+  }
   .header-logged-in-avatar {
     height: 40px;
   }
