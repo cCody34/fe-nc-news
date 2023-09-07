@@ -2,6 +2,7 @@ import { getComments } from "../api";
 import { useState, useEffect } from "react";
 import CommentCard from "./CommentCard";
 import AddComment from "./AddComment";
+import Error from "./Error";
 
 const CommentList = ({ article_id, comments, setComments }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,13 +17,24 @@ const CommentList = ({ article_id, comments, setComments }) => {
         setIsLoading(false);
         setIsError(false);
       })
-      .catch(({ message }) => {
-        setIsError(message);
+      .catch((err) => {
+        setIsError(err);
       });
   }, []);
 
   if (isError) {
-    return <p>Error: {isError}</p>;
+    if (isError.response.data.msg) {
+      return (
+        <Error
+          errCode={isError.response.status}
+          errMsg={isError.response.data.msg}
+        />
+      );
+    } else {
+      return (
+        <Error errCode={isError.response.status} errMsg={isError.message} />
+      );
+    }
   }
 
   if (isLoading) {
@@ -37,7 +49,21 @@ const CommentList = ({ article_id, comments, setComments }) => {
         </p>
       );
     } else {
-      return <p>Error: {commentCardError}</p>;
+      if (commentCardError.response.data.msg) {
+        return (
+          <Error
+            errCode={commentCardError.response.status}
+            errMsg={commentCardError.response.data.msg}
+          />
+        );
+      } else {
+        return (
+          <Error
+            errCode={commentCardError.response.status}
+            errMsg={commentCardError.message}
+          />
+        );
+      }
     }
   }
 

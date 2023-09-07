@@ -1,6 +1,7 @@
 import { getArticleById, patchArticleVotes } from "../api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Error from "./Error";
 
 const ArticleCard = ({ article_id }) => {
   const [article, setArticle] = useState({});
@@ -17,8 +18,8 @@ const ArticleCard = ({ article_id }) => {
         setIsLoading(false);
         setIsError(false);
       })
-      .catch(({ message }) => {
-        setIsError(message);
+      .catch((err) => {
+        setIsError(err);
       });
   }, []);
 
@@ -30,13 +31,24 @@ const ArticleCard = ({ article_id }) => {
       .then(() => {
         setIsError(false);
       })
-      .catch(({ message }) => {
-        setIsError(message);
+      .catch((err) => {
+        setIsError(err);
       });
   };
 
   if (isError) {
-    return <p>Error: {isError}</p>;
+    if (isError.response.data.msg) {
+      return (
+        <Error
+          errCode={isError.response.status}
+          errMsg={isError.response.data.msg}
+        />
+      );
+    } else {
+      return (
+        <Error errCode={isError.response.status} errMsg={isError.message} />
+      );
+    }
   }
 
   if (isLoading) {
