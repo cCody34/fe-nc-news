@@ -1,5 +1,15 @@
+import { Link } from "react-router-dom";
+
 const ErrorPage = () => {
-  return <h2>404: Page does not exist</h2>;
+  return (
+    <>
+      <h2>404: PAGE NOT FOUND</h2>
+      <label>
+        Double check that URL is correct or <Link to="/">click here</Link> to go
+        to Home page.
+      </label>
+    </>
+  );
 };
 
 export default ErrorPage;
