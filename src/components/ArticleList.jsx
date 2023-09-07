@@ -1,6 +1,7 @@
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import { useState, useEffect } from "react";
+import Error from "./Error";
 
 const ArticleList = ({ limit, topic, sort_by, order }) => {
   const [articles, setArticles] = useState([]);
@@ -22,8 +23,18 @@ const ArticleList = ({ limit, topic, sort_by, order }) => {
   }, [topic, sort_by, order]);
 
   if (isError) {
-    return <Error />;
-    // errCode={isError.response.status} errMsg={isError.message} />;
+    if (isError.response.data.msg) {
+      return (
+        <Error
+          errCode={isError.response.status}
+          errMsg={isError.response.data.msg}
+        />
+      );
+    } else {
+      return (
+        <Error errCode={isError.response.status} errMsg={isError.message} />
+      );
+    }
   }
 
   if (isLoading) {
