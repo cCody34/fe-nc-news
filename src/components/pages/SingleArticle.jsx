@@ -70,12 +70,13 @@ const SingleArticle = () => {
   return (
     <section className="single-article">
       <h2 id="single-article-title">{title}</h2>
-      <section className="article-info">
-        <section className="article-info-text">
+      <section className="single-article-info">
+        <section className="single-article-info-text">
           <p>Topic: {topic}</p>
           <p>Author: {author}</p>
           <p>
-            Number of <a href="#article-comments">comments</a>: {comment_count}
+            Number of <a href="#single-article-comments">comments</a>:{" "}
+            {comment_count}
           </p>
           {created_at ? (
             <p>Article date: {date.toLocaleDateString("en-GB")}</p>
@@ -104,7 +105,7 @@ const SingleArticle = () => {
       <img className="single-article-img" src={`${article_img_url}`}></img>
       <p>{body}</p>
       <section className="single-article-comments-section">
-        <h3 id="article-comments">Article Comments</h3>
+        <h3 id="single-article-comments">Article Comments</h3>
         <CommentList
           article_id={article_id}
           comments={comments}
