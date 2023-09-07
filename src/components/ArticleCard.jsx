@@ -17,8 +17,8 @@ const ArticleCard = ({ article_id }) => {
         setIsLoading(false);
         setIsError(false);
       })
-      .catch(({ message }) => {
-        setIsError(message);
+      .catch((err) => {
+        setIsError(err);
       });
   }, []);
 
@@ -30,13 +30,14 @@ const ArticleCard = ({ article_id }) => {
       .then(() => {
         setIsError(false);
       })
-      .catch(({ message }) => {
-        setIsError(message);
+      .catch((err) => {
+        setIsError(err);
       });
   };
 
   if (isError) {
-    return <p>Error: {isError}</p>;
+    return <Error />
+    // errCode={isError.response.status} errMsg={isError.messa} />;
   }
 
   if (isLoading) {

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getArticleById, patchArticleVotes } from "../../api";
 import CommentList from "../CommentList";
 import AddComment from "../AddComment";
+import Error from "../Error";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -38,7 +39,18 @@ const SingleArticle = () => {
   const date = new Date(created_at);
 
   if (isError) {
-    return <p>Error: {isError.message}</p>;
+    if (isError.response.data.msg) {
+      return (
+        <Error
+          errCode={isError.response.status}
+          errMsg={isError.response.data.msg}
+        />
+      );
+    } else {
+      return (
+        <Error errCode={isError.response.status} errMsg={isError.message} />
+      );
+    }
   }
 
   if (isLoading) {

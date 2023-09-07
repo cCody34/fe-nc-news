@@ -16,13 +16,14 @@ const CommentList = ({ article_id, comments, setComments }) => {
         setIsLoading(false);
         setIsError(false);
       })
-      .catch(({ message }) => {
-        setIsError(message);
+      .catch((err) => {
+        setIsError(err);
       });
   }, []);
 
   if (isError) {
-    return <p>Error: {isError}</p>;
+    console.log(isError, "<<error in comment list");
+    commentCardError;
   }
 
   if (isLoading) {
@@ -37,7 +38,12 @@ const CommentList = ({ article_id, comments, setComments }) => {
         </p>
       );
     } else {
-      return <p>Error: {commentCardError}</p>;
+      return (
+        <Error />
+        //   errCode={commentCardError.response.status}
+        //   errMsg={commentCardError.message}
+        // />
+      );
     }
   }
 

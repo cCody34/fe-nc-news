@@ -16,13 +16,14 @@ const ArticleList = ({ limit, topic, sort_by, order }) => {
         setIsLoading(false);
         setIsError(false);
       })
-      .catch(({ message }) => {
-        setIsError(message);
+      .catch((err) => {
+        setIsError(err);
       });
   }, [topic, sort_by, order]);
 
   if (isError) {
-    return <p>Error: {isError}</p>;
+    return <Error />;
+    // errCode={isError.response.status} errMsg={isError.message} />;
   }
 
   if (isLoading) {
