@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getArticleById, patchArticleVotes } from "../../api";
 import CommentList from "../CommentList";
-import AddComment from "../AddComment";
 import Error from "../Error";
 
 const SingleArticle = () => {
