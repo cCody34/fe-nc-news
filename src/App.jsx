@@ -12,14 +12,19 @@ function App() {
   return (
     <section className="app">
       <Header />
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/articles" element={<Articles />}></Route>
-        <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
-        <Route path="/log-in" element={<LogIn />}></Route>
-        <Route path="*" element={<ErrorPage />}></Route>
-      </Routes>
+      <section className="content-container">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/articles" element={<Articles />}></Route>
+          <Route
+            path="/articles/:article_id"
+            element={<SingleArticle />}
+          ></Route>
+          <Route path="/log-in" element={<LogIn />}></Route>
+          <Route path="*" element={<ErrorPage />}></Route>
+        </Routes>
+      </section>
     </section>
   );
 }

@@ -33,7 +33,7 @@ const AddComment = ({ article_id, setComments }) => {
         ];
       });
       setIsError(false);
-      postComment(article_id, "tickle122", newComment)
+      postComment(article_id, user.username, newComment)
         .then(() => {
           setIsLoading(false);
           setNewComment("");

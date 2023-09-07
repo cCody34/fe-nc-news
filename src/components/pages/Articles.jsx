@@ -23,7 +23,7 @@ const Articles = () => {
   };
 
   return (
-    <section>
+    <section className="articles">
       <h2>{topicQuery ? formatTopicQuery(topicQuery) : "All Articles:"}</h2>
       <label>
         Sort by:

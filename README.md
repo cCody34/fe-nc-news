@@ -6,7 +6,7 @@ The deployed version of this app can be found at: https://nc-news-ccody34.netlif
 
 ## Project Description
 
-This project involved creating the front end of a C.R.U.D. application.
+This project involved creating the front end for a PgSQL backend.
 
 The app is a social news aggregation, web content rating and discussion website.
 
