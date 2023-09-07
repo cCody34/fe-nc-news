@@ -24,6 +24,10 @@ button {
   }
 }
 
+.active-topic {
+  background-color: red;
+}
+
 .article-list {
   display: flex;
   flex-direction: row;
