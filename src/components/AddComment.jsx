@@ -53,17 +53,19 @@ const AddComment = ({ article_id, setComments }) => {
     return <p>Posting comment: {newComment}</p>;
   }
   return (
-    <form>
-      <label>
-        Add Comment:
-        <input
-          value={newComment}
-          onChange={(event) => {
-            setNewComment(event.target.value);
-          }}
-        ></input>
-      </label>
-      <button onClick={handleCommentSubmit}>Submit</button>
+    <form className="comment-adder">
+      <p className="comment-adder-label">Add a comment:</p>
+
+      <textarea
+        className="comment-adder-input"
+        value={newComment}
+        onChange={(event) => {
+          setNewComment(event.target.value);
+        }}
+      ></textarea>
+      <button className="comment-adder-button" onClick={handleCommentSubmit}>
+        Post Comment
+      </button>
       <p>{needTextMessage}</p>
     </form>
   );

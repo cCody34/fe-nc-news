@@ -81,7 +81,11 @@ const ArticleCard = ({ article_id }) => {
         <img className="article-card-img" src={`${article_img_url}`}></img>
       </Link>
       <section className="article-card-info">
-        <p className="article-card-comment-count">Comments: {comment_count}</p>
+        <Link to={`/articles/${article_id}#single-article-comments`}>
+          <p className="article-card-comment-count">
+            Comments: {comment_count}
+          </p>
+        </Link>
         <p className="article-card-topic">Topic: {topic}</p>
       </section>
     </section>

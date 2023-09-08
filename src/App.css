@@ -1,11 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Open+Sans:wght@400;700&family=Ubuntu:wght@300;400&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   color: #2c302e;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", "Open Sans", "Ubuntu", sans-serif;
+  /* font-family: "Open Sans", sans-serif;
+  font-family: "Ubuntu", sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
 }
+h1 {
+  font-weight: 700;
+}
+
 .header-main-text a {
   color: #fff0f6;
 }
@@ -60,16 +68,28 @@ select {
       .header-logged-in-username {
         grid-area: 1 / 1 / 2 / 3;
       }
-      .header-logged-in-avatar {
+      .header-logged-in-avatar-background {
         grid-area: 2 / 1 / 3 / 2;
+        background-color: #fff0f6;
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+        display: flex;
+        margin: auto;
+        .header-logged-in-avatar {
+          mix-blend-mode: multiply;
+          margin: 0 auto;
+        }
       }
       .header-logged-in-switch-user {
         grid-area: 2 / 2 / 3 / 3;
+        margin: 10px;
       }
     }
 
     .header-logged-in-avatar {
       height: 40px;
+      max-width: 40px;
     }
 
     .header-logged-in-username {
@@ -96,6 +116,17 @@ select {
     background-color: #fafffe;
     margin: 10px 2%;
     padding: 5px;
+    .articles-sort-and-order {
+      padding-top: 10px;
+      display: flex;
+      .articles-sort-by {
+        margin-right: 20px;
+      }
+      .sort-drop-down,
+      .order-drop-down {
+        padding-left: 2px;
+      }
+    }
   }
   .article-list {
     display: flex;
@@ -183,31 +214,50 @@ select {
   flex-direction: column;
   justify-content: center;
   .comment-card {
-    display: grid;
-    grid-template-columns: auto 40px;
-    grid-template-rows: auto auto;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    align-items: center;
     border: 1px solid #84a59d;
-    border-radius: 5px;
+    border-radius: 1px;
     padding: 5px;
     margin: 2px auto;
     width: 92%;
-    .comment-card-body {
-      grid-area: 1 / 1 / 2 / 2;
-      margin: 0;
-    }
-    .comment-card-info {
-      grid-area: 2 / 1 / 3 / 2;
+    .comment-card-first-line {
       display: flex;
-      justify-content: space-around;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      .comment-card-first-left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .comment-card-avatar-background {
+          background-color: #fff0f6;
+          height: 40px;
+          width: 40px;
+          border-radius: 100%;
+          display: flex;
+          .comment-card-avatar {
+            mix-blend-mode: multiply;
+            margin: 0 auto;
+            max-width: 100%;
+          }
+        }
+        .comment-card-author {
+          align-self: center;
+          padding: 0 5px;
+        }
+        .comment-card-date {
+          color: #2c302e5c;
+          font-size: 10px;
+        }
+      }
+    }
+    .comment-card-body {
+      margin-left: 20px;
     }
     .comment-card-votes {
-      grid-area: 1 / 2 / 3 / 3;
-      text-align: center;
+      display: flex;
+      align-items: center;
       .comment-card-votes-text {
-        margin: 0;
+        padding: 0 10px;
       }
     }
   }
@@ -225,6 +275,7 @@ select {
     .user-card-avatar {
       max-width: 100%;
       height: 100px;
+      mix-blend-mode: multiply;
     }
   }
 }
@@ -305,5 +356,26 @@ select {
       display: flex;
       justify-content: space-between;
     }
+  }
+  .sort-drop-down,
+  .order-drop-down {
+    padding-left: 2px;
+    margin-left: 5px;
+  }
+}
+
+.comment-adder {
+  margin: 10px auto;
+  .comment-adder-label {
+    margin: auto;
+    align-content: flex-start;
+  }
+  .comment-adder-input {
+    width: 100%;
+    margin: 5px auto;
+    height: 60px;
+  }
+  .comment-adder-button {
+    margin: auto;
   }
 }
