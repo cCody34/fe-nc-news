@@ -13,7 +13,7 @@ h1 {
 .single-user-img {
   max-width: 80vw;
   width: 300px;
-
+  mix-blend-mode: multiply;
   max-height: 70vh;
   height: 300px;
 }
