@@ -44,11 +44,21 @@ const CommentCard = ({ comment, setComments, setCommentCardError }) => {
   return (
     <section className="comment-card">
       <section className="comment-card-first-line">
-        <div className="comment-card-avatar-background">
-          <img className="comment-card-avatar" src={authorImage}></img>
-        </div>
-        <h4 className="comment-card-author">{author}</h4>
-        <p className="comment-card-date"> {date.toLocaleDateString("en-GB")}</p>
+        <section className="comment-card-first-left">
+          <div className="comment-card-avatar-background">
+            <img className="comment-card-avatar" src={authorImage}></img>
+          </div>
+          <h4 className="comment-card-author">{author}</h4>
+          <p className="comment-card-date">
+            {" "}
+            {date.toLocaleDateString("en-GB")}
+          </p>
+        </section>
+        {author === user.username ? (
+          <button onClick={handleDeleteComment}>❌</button>
+        ) : (
+          <></>
+        )}
       </section>
       <p className="comment-card-body">{body}</p>
       <section className="comment-card-votes">
@@ -70,11 +80,6 @@ const CommentCard = ({ comment, setComments, setCommentCardError }) => {
           ⬇
         </button>
       </section>
-      {author === user.username ? (
-        <button onClick={handleDeleteComment}>❌</button>
-      ) : (
-        <></>
-      )}
     </section>
   );
 };
