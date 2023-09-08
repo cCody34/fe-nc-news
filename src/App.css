@@ -96,6 +96,17 @@ select {
     background-color: #fafffe;
     margin: 10px 2%;
     padding: 5px;
+    .articles-sort-and-order {
+      padding-top: 10px;
+      display: flex;
+      .articles-sort-by {
+        margin-right: 20px;
+      }
+      .sort-drop-down,
+      .order-drop-down {
+        padding-left: 2px;
+      }
+    }
   }
   .article-list {
     display: flex;
@@ -305,5 +316,10 @@ select {
       display: flex;
       justify-content: space-between;
     }
+  }
+  .sort-drop-down,
+  .order-drop-down {
+    padding-left: 2px;
+    margin-left: 5px;
   }
 }

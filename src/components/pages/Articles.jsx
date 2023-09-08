@@ -25,32 +25,36 @@ const Articles = () => {
   return (
     <section className="articles">
       <h2>{topicQuery ? formatTopicQuery(topicQuery) : "All Articles:"}</h2>
-      <label>
-        Sort by:
-        <select
-          onChange={(event) => {
-            changeSortBy(event.target.value);
-          }}
-          defaultValue={sortByQuery ? sortByQuery : "created_at"}
-        >
-          <option value="created_at">Date created</option>
-          <option value="title">Title</option>
-          <option value="votes">Votes</option>
-          <option value="comment_count">Number of Comments</option>
-        </select>
-      </label>
-      <label>
-        Order:
-        <select
-          onChange={(event) => {
-            changeOrder(event.target.value);
-          }}
-          defaultValue={orderQuery ? orderQuery : "desc"}
-        >
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
-      </label>
+      <section className="articles-sort-and-order">
+        <label className="articles-sort-by">
+          Sort by:
+          <select
+            className="sort-drop-down"
+            onChange={(event) => {
+              changeSortBy(event.target.value);
+            }}
+            defaultValue={sortByQuery ? sortByQuery : "created_at"}
+          >
+            <option value="created_at">Date created</option>
+            <option value="title">Title</option>
+            <option value="votes">Votes</option>
+            <option value="comment_count">Number of Comments</option>
+          </select>
+        </label>
+        <label className="articles-order">
+          Order:
+          <select
+            className="order-drop-down"
+            onChange={(event) => {
+              changeOrder(event.target.value);
+            }}
+            defaultValue={orderQuery ? orderQuery : "desc"}
+          >
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </label>
+      </section>
       <ArticleList
         topic={topicQuery}
         sort_by={sortByQuery}
