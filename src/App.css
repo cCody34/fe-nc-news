@@ -151,7 +151,8 @@ select {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     align-items: center;
-    border: 1px solid red;
+    border: 1px solid #84a59d;
+    border-radius: 5px;
     padding: 5px;
     margin: 2px;
     width: 400px;
