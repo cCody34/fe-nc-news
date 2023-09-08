@@ -9,9 +9,14 @@ const Header = () => {
     return (
       <section className="header-logged-in">
         <p className="header-logged-in-username">Logged in as: {user.name}</p>
-        <div className="header-logged-in-avatar-background">
-          <img className="header-logged-in-avatar" src={user.avatar_url}></img>
-        </div>
+        <Link to={`/users/${user.username}`}>
+          <div className="header-logged-in-avatar-background">
+            <img
+              className="header-logged-in-avatar"
+              src={user.avatar_url}
+            ></img>
+          </div>
+        </Link>
         <Link to="/log-in" className="header-logged-in-switch-user">
           <button>Switch user</button>{" "}
         </Link>

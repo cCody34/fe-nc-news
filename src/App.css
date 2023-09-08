@@ -150,7 +150,6 @@ select {
       padding: 10px;
       border: 3px #fff0f6 solid;
       border-radius: 5px;
-      cursor: pointer;
       .article-card-votes {
         grid-area: 1 / 1 / 4 / 2;
         text-align: center;
@@ -337,7 +336,6 @@ select {
     padding: 10px;
     border: 3px #fff0f6 solid;
     border-radius: 5px;
-    cursor: pointer;
     .article-card-votes {
       grid-area: 1 / 1 / 4 / 2;
       text-align: center;
