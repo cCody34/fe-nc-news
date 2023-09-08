@@ -168,7 +168,7 @@ select {
     margin: 2px auto;
     width: 92%;
     .comment-card-body {
-      grid-area: 1 / 1 / 2 / 3;
+      grid-area: 1 / 1 / 2 / 2;
       margin: 0;
     }
     .comment-card-info {
@@ -177,7 +177,7 @@ select {
       justify-content: space-around;
     }
     .comment-card-votes {
-      grid-area: 2 / 2 / 3 / 3;
+      grid-area: 1 / 2 / 3 / 3;
       text-align: center;
       .comment-card-votes-text {
         margin: 0;
