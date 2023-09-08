@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "./contexts/User";
 import { deleteComment, getUserByName, patchCommentVotes } from "../api";
+import { Link } from "react-router-dom";
 
 const CommentCard = ({ comment, setComments, setCommentCardError }) => {
   const { article_id, author, body, comment_id, created_at, votes } = comment;
@@ -48,7 +49,9 @@ const CommentCard = ({ comment, setComments, setCommentCardError }) => {
           <div className="comment-card-avatar-background">
             <img className="comment-card-avatar" src={authorImage}></img>
           </div>
-          <h4 className="comment-card-author">{author}</h4>
+          <Link to={`/users/${author}`}>
+            <h4 className="comment-card-author">{author}</h4>
+          </Link>
           <p className="comment-card-date">
             {" "}
             {date.toLocaleDateString("en-GB")}

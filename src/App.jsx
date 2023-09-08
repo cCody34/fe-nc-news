@@ -7,6 +7,7 @@ import Articles from "./components/pages/Articles";
 import SingleArticle from "./components/pages/SingleArticle";
 import LogIn from "./components/pages/LogIn";
 import ErrorPage from "./components/pages/ErrorPage";
+import SingleUser from "./components/pages/SingleUser";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             element={<SingleArticle />}
           ></Route>
           <Route path="/log-in" element={<LogIn />}></Route>
+          <Route path="/users/:username" element={<SingleUser />}></Route>
           <Route path="*" element={<ErrorPage />}></Route>
         </Routes>
       </section>

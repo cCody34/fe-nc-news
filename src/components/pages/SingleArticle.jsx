@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getArticleById, patchArticleVotes } from "../../api";
 import CommentList from "../CommentList";
 import Error from "../Error";
+import { Link } from "react-router-dom";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -73,7 +74,9 @@ const SingleArticle = () => {
       <section className="single-article-info">
         <section className="single-article-info-text">
           <p>Topic: {topic}</p>
-          <p>Author: {author}</p>
+          <p>
+            Author: <Link to={`/users/${author}`}>{author}</Link>
+          </p>
           <p>
             Number of <a href="#single-article-comments">comments</a>:{" "}
             {comment_count}
