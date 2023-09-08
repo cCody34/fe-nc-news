@@ -141,8 +141,7 @@ select {
 
 .comment-list {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   .comment-card {
     display: grid;
@@ -154,8 +153,8 @@ select {
     border: 1px solid #84a59d;
     border-radius: 5px;
     padding: 5px;
-    margin: 2px;
-    width: 400px;
+    margin: 2px auto;
+    width: 92%;
     .comment-card-body {
       grid-area: 1 / 1 / 2 / 3;
       margin: 0;

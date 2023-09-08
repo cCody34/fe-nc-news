@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { postComment } from "../api";
+import { getComments, postComment } from "../api";
 import { useContext } from "react";
 import { UserContext } from "./contexts/User";
 
@@ -37,6 +37,9 @@ const AddComment = ({ article_id, setComments }) => {
         .then(() => {
           setIsLoading(false);
           setNewComment("");
+          getComments(article_id).then(({ data }) => {
+            setComments(data.comments);
+          });
         })
         .catch(({ message }) => {
           setIsError(message);

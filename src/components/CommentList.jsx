@@ -42,11 +42,13 @@ const CommentList = ({ article_id, comments, setComments }) => {
   }
 
   if (commentCardError) {
-    if (commentCardError === "Request failed with status code 500") {
+    if (commentCardError.config.method === "patch") {
       return (
-        <p>
-          Error: Could not delete comment, please refresh page and try again
-        </p>
+        <p>Error: Could not vote for comment, please refresh and try again</p>
+      );
+    } else if (commentCardError.config.method === "delete") {
+      return (
+        <p>Error: Could not delete comment, please refresh and try again</p>
       );
     } else {
       if (commentCardError.response.data.msg) {
