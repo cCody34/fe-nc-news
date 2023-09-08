@@ -6,6 +6,7 @@
   color: #2c302e;
   font-family: "Montserrat", sans-serif;
 }
+
 .header-main-text a {
   color: #fff0f6;
 }
@@ -60,16 +61,28 @@ select {
       .header-logged-in-username {
         grid-area: 1 / 1 / 2 / 3;
       }
-      .header-logged-in-avatar {
+      .header-logged-in-avatar-background {
         grid-area: 2 / 1 / 3 / 2;
+        background-color: #fff0f6;
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+        display: flex;
+        margin: auto;
+        .header-logged-in-avatar {
+          mix-blend-mode: multiply;
+          margin: 0 auto;
+        }
       }
       .header-logged-in-switch-user {
         grid-area: 2 / 2 / 3 / 3;
+        margin: 10px;
       }
     }
 
     .header-logged-in-avatar {
       height: 40px;
+      max-width: 40px;
     }
 
     .header-logged-in-username {
@@ -236,6 +249,7 @@ select {
     .user-card-avatar {
       max-width: 100%;
       height: 100px;
+      mix-blend-mode: multiply;
     }
   }
 }
@@ -321,5 +335,21 @@ select {
   .order-drop-down {
     padding-left: 2px;
     margin-left: 5px;
+  }
+}
+
+.comment-adder {
+  margin: 10px auto;
+  .comment-adder-label {
+    margin: auto;
+    align-content: flex-start;
+  }
+  .comment-adder-input {
+    width: 100%;
+    margin: 5px auto;
+    height: 60px;
+  }
+  .comment-adder-button {
+    margin: auto;
   }
 }
