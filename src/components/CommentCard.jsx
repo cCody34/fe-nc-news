@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "./contexts/User";
-import { deleteComment } from "../api";
+import { deleteComment, patchCommentVotes } from "../api";
 
 const CommentCard = ({ comment, setComments, setCommentCardError }) => {
   const { article_id, author, body, comment_id, created_at, votes, posting } =
     comment;
+  const [commentVotes, setCommentVotes] = useState(votes);
   const { user } = useContext(UserContext);
 
   const date = new Date(created_at);
@@ -17,9 +18,20 @@ const CommentCard = ({ comment, setComments, setCommentCardError }) => {
       });
     });
     setCommentCardError(false);
-    deleteComment(comment_id).catch(({message}) => {
-      setCommentCardError(message);
+    deleteComment(comment_id).catch((err) => {
+      setCommentCardError(err);
     });
+  };
+
+  const changeCommentVotes = (increment) => {
+    setCommentVotes((currentVotes) => currentVotes + increment);
+    patchCommentVotes(comment_id, increment)
+      .then(() => {
+        setCommentCardError(false);
+      })
+      .catch((err) => {
+        setCommentCardError(err);
+      });
   };
 
   return (
@@ -39,9 +51,23 @@ const CommentCard = ({ comment, setComments, setCommentCardError }) => {
         )}
       </section>
       <section className="comment-card-votes">
-        <button className="comment-card-votes-buttons">⬆</button>
-        <p className="comment-card-votes-text">{votes} votes</p>
-        <button className="comment-card-votes-buttons">⬇</button>
+        <button
+          className="comment-card-votes-buttons"
+          onClick={() => {
+            changeCommentVotes(1);
+          }}
+        >
+          ⬆
+        </button>
+        <p className="comment-card-votes-text">{commentVotes} votes</p>
+        <button
+          className="comment-card-votes-buttons"
+          onClick={() => {
+            changeCommentVotes(-1);
+          }}
+        >
+          ⬇
+        </button>
       </section>
     </section>
   );
