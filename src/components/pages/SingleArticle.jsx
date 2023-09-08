@@ -103,7 +103,7 @@ const SingleArticle = () => {
         </section>
       </section>
       <img className="single-article-img" src={`${article_img_url}`}></img>
-      <p>{body}</p>
+      <p className="single-article-text">{body}</p>
       <section className="single-article-comments-section">
         <h3 id="single-article-comments">Article Comments</h3>
         <CommentList
