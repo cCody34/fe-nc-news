@@ -10,7 +10,7 @@ const Header = () => {
       <section className="header-logged-in">
         <p className="header-logged-in-username">Logged in as: {user.name}</p>
         <img className="header-logged-in-avatar" src={user.avatar_url}></img>
-        <Link to="/log-in">
+        <Link to="/log-in" className="header-logged-in-switch-user">
           <button>Switch user</button>{" "}
         </Link>
       </section>

@@ -53,6 +53,20 @@ select {
       color: #fff0f6;
       font-size: xx-large;
     }
+    .header-logged-in {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(2, auto);
+      .header-logged-in-username {
+        grid-area: 1 / 1 / 2 / 3;
+      }
+      .header-logged-in-avatar {
+        grid-area: 2 / 1 / 3 / 2;
+      }
+      .header-logged-in-switch-user {
+        grid-area: 2 / 2 / 3 / 3;
+      }
+    }
 
     .header-logged-in-avatar {
       height: 40px;
