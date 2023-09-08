@@ -3,7 +3,14 @@
   padding: 0;
   color: #2c302e;
 }
-
+.header-main-text a {
+  color: #fff0f6;
+}
+.header-main-text a:visited,
+a:active,
+a:hover {
+  color: #fff0f6;
+}
 a {
   text-decoration: none;
   color: #84a59d;
