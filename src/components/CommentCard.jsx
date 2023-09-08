@@ -17,7 +17,7 @@ const CommentCard = ({ comment, setComments, setCommentCardError }) => {
       });
     });
     setCommentCardError(false);
-    deleteComment(comment_id).catch(({message}) => {
+    deleteComment(comment_id).catch(({ message }) => {
       setCommentCardError(message);
     });
   };
