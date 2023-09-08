@@ -59,6 +59,11 @@ select {
     background-color: #fafffe;
     margin: 10px 2%;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
+    .home-articles-link {
+      margin: auto;
+    }
   }
   .articles {
     background-color: #fafffe;

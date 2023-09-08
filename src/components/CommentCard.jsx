@@ -4,7 +4,7 @@ import { UserContext } from "./contexts/User";
 import { deleteComment, patchCommentVotes } from "../api";
 
 const CommentCard = ({ comment, setComments, setCommentCardError }) => {
-  const { article_id, author, body, comment_id, created_at, votes, posting } =
+  const { article_id, author, body, comment_id, created_at, votes } =
     comment;
   const [commentVotes, setCommentVotes] = useState(votes);
   const { user } = useContext(UserContext);
