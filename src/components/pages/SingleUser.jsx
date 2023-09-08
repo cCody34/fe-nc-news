@@ -39,7 +39,7 @@ const SingleUser = () => {
       <>
         <h2>{singleUser.name} Profile</h2>
         <p>Username: {singleUser.username}</p>
-        <img src={singleUser.avatar_url}></img>
+        <img src={singleUser.avatar_url} className="single-user-img"></img>
       </>
     );
   };

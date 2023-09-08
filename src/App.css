@@ -10,6 +10,14 @@ h1 {
   font-weight: 700;
 }
 
+.single-user-img {
+  max-width: 80vw;
+  width: 300px;
+
+  max-height: 70vh;
+  height: 300px;
+}
+
 .header-main-text a {
   color: #fff0f6;
 }
