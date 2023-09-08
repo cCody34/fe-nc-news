@@ -77,7 +77,9 @@ const ArticleCard = ({ article_id }) => {
       <h3 className="article-card-title">
         <Link to={`/articles/${article_id}`}>{title}</Link>
       </h3>
-      <img className="article-card-img" src={`${article_img_url}`}></img>
+      <Link to={`/articles/${article_id}`}>
+        <img className="article-card-img" src={`${article_img_url}`}></img>
+      </Link>
       <section className="article-card-info">
         <p className="article-card-comment-count">Comments: {comment_count}</p>
         <p className="article-card-topic">Topic: {topic}</p>
